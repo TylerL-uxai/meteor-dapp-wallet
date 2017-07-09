@@ -25,22 +25,23 @@
             <div class="accounts-page-summary">
                 {{> dapp_identicon identity=address}}
                 <header>
-                    <h1>
-                        <span class="edit-name">{{name}}</span> <i class="edit-icon icon-pencil"></i>
-                        {{#if $or owners jsonInterface}}
-                            <button class="dapp-icon-button delete icon-trash"></button>
-                        {{/if}}
-                    </h1>
-                    <h2 class="copyable-address">
+                    <a href="/">Wallets</a> / <span class="edit-name">{{name}}</span> <i class="edit-icon icon-pencil"></i>
+                    {{#if $or owners jsonInterface}}
+                        <button class="dapp-icon-button delete icon-trash"></button>
+                    {{/if}}
+                    <br><br>
+                    <span class="copyable-address">
 
                         <!-- <input type="text" value="{{toChecksumAddress address}}" readonly class=""> -->
-                        <span>{{toChecksumAddress address}}</span>
+                        <span><b>Public Address:</b><br>
+                          {{toChecksumAddress address}}</span>
                         <button class="copy-to-clipboard-button">
-                          <i class="icon-docs"></i>
-                          {{i18n "wallet.accounts.buttons.copyAddress"}}
+
+                          ({{i18n "wallet.accounts.buttons.copyAddress"}})
                         </button>
-                    </h2>
+                    </span>
                     <div class="clear"></div>
+                    <br><b>Balance:</b><br>
                     {{> elements_balance balance=balance changeUnit=true showAllDecimals=true}}
                 </header>
 
@@ -225,3 +226,19 @@
         </div>
     {{/with}}
 </template>
+
+<head>
+<style>
+.breadcrumb {
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #eceeef;
+    border-radius: .25rem;
+}
+
+.breadcrumb-item.active {
+    color: #636c72;
+}
+</style>
+</head>
